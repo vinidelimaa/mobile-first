@@ -1,0 +1,200 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;800&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --hue: 250;
+    --bg-primary: hsl(var(--hue), 22%, 20%);
+    --fc-primary: hsl(var(--hue), 0%, 100%);
+    --fc-secondary: hsl(var(--hue), 50%, 80%);
+
+    --ff-heading: 'Epilogue', sans-serif;
+    --ff-texting: 'Open Sans', sans-serif;
+
+    font-size: 62.5%;
+    --fs-body: 1.6rem;
+    --fs-heading: clamp(4rem, 1rem + 5vw, 5.6rem);
+    --fs-heading-sm: clamp(3rem, 0.5rem + 3vw, 4rem);
+}
+
+
+body {
+    font-family: var(--f-texting);
+
+    background-color: var(--bg-primary);
+    color: var(--fc-primary);
+
+    font-size: var(--fs-body);
+}
+
+
+.page {
+    max-width: clamp(33rem, 38rem + 68vw, 117rem);
+    min-width: 30rem;
+    margin: 0 auto;
+    padding: 1rem 5rem;
+}
+
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+header {
+    font-family: var(--ff-heading);
+    font-size: 4rem;
+    
+    text-align: center;
+    
+    margin: 10rem 0 8rem;
+    
+    animation: topdown 700ms;
+}
+
+
+header p {
+    color: var(--fc-secondary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 3.2rem;
+    margin-bottom: 1.7rem;
+    font-weight: 400;
+}
+
+
+header h1 {
+    font-weight: 800;
+    font-size: var(--fs-heading);
+    line-height: 4.8rem;
+}
+
+
+main {
+    display: grid;
+    gap: 3.2rem;
+    
+    animation: downtop 700ms 350ms backwards; 
+    /* on using delay (350ms), always have to use back or forwards */
+}
+
+
+.card {
+    position: relative;
+    
+    font-family: var(--ff-heading);
+}
+
+
+.card img {
+    height: 41.5rem;
+    object-fit: cover;
+    border-radius: .6rem;
+    transition: all 200ms ease;
+}
+
+
+.card img:hover {
+    transform: scale(1.03);
+    opacity: 0.5;
+}
+
+
+.card h2 {
+    position: absolute;
+    bottom: 5rem;
+    left: 3rem;
+    
+    font-size: var(--fs-heading-sm);
+    font-weight: 800;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2.3rem;
+}
+
+
+.card h2 span {
+    font-weight: 400;
+    font-size: var(--fs-body);
+    line-height: 3.2rem;
+    background-color: var(--fc-primary);
+    color: var(--bg-primary);
+    height: 4rem;
+    width: fit-content;
+    padding: 0 1.5rem;
+    border-radius: 2rem;
+    
+    display: inline-flex;
+    align-items: center;
+}
+
+
+@keyframes topdown {  /* header */
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes downtop {   /* main */
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(-15px);
+    }
+}
+
+
+@media (min-width: 760px) {
+    .page {
+        max-width: 117rem;
+        padding: 0 10rem 5rem;
+    }
+
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (min-width: 1070px) {
+    main {
+        grid-template-areas: "A B B" "C C D";
+    }
+
+    main div:nth-child(1) {
+        grid-area: A;
+    }
+
+    main div:nth-child(2) {
+        grid-area: B;
+    }
+
+    main div:nth-child(3) {
+        grid-area: C;
+    }
+
+    main div:nth-child(4) {
+        grid-area: D;
+    }
+}
